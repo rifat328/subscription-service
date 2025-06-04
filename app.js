@@ -11,6 +11,7 @@ import subscriptionRouter from "./routes/subscription.routes.js";
 import connectToDatabase from './DATABASE/mongodb.js'
 // middleware for error check
 import errorMiddleware from "./middlewares/error.middleware.js"; //for error check
+import arcjetMiddleware from "./middlewares/arcjet.middleware.js";
 
 
 const app=express();
@@ -18,6 +19,8 @@ const app=express();
     app.use(express.json());
     app.use(express.urlencoded({extended:false}));
     app.use(cookieParser());
+
+    app.use(arcjetMiddleware);
 
     //Routes and Router
 app.use('/api/v1/auth', authRouter);
