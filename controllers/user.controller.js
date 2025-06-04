@@ -13,6 +13,14 @@ export const  getUsers= async( req, res, next) =>{
 
 export const  getUser= async( req, res, next) =>{
     try{
+
+        if (req.user._id.toString() !== req.params.id) {
+      return res.status(403).json({
+        success: false,
+        message: "Access Denied: You are not authorized to view this user",
+      });
+     }
+
         const user = await User.findById(req.params.id).select('-password');
         if(!user){
             const error = new Error("User Not Found");
