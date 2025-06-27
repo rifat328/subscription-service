@@ -37,7 +37,9 @@ app.get("/", (reg, res) => {
 });
 
 app.listen(PORT, async () => {
-  console.log(`mini Commerce is running on port : http://localhost:${PORT}`);
+  console.log(
+    `subscription service is running on port : http://localhost:${PORT}`
+  );
   await connectToDatabase();
 });
 

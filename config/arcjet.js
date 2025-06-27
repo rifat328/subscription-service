@@ -1,4 +1,4 @@
-import arcjet, {shield, detectBot, tokenBucket} from "@arcjet/node";
+import arcjet, { shield, detectBot, tokenBucket } from "@arcjet/node";
 import { ARCJET_KEY } from "./env.js";
 
 const aj = arcjet({
@@ -19,6 +19,16 @@ const aj = arcjet({
         // See the full list at https://arcjet.com/bot-list
         //"CATEGORY:MONITOR", // Uptime monitoring services
         //"CATEGORY:PREVIEW", // Link previews e.g. Slack, Discord
+      ],
+      allowlist: [
+        {
+          type: "user-agent",
+          pattern: "Upstash-QStash",
+        },
+        {
+          type: "ip",
+          pattern: "127.0.0.1", // Allow local testing (like curl)
+        },
       ],
     }),
     // Create a token bucket rate limit. Other algorithms are supported.
