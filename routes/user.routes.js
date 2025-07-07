@@ -8,7 +8,12 @@ userRouter.get("/", getUsers);
 
 userRouter.get("/:id", authorize, getUser);
 
-userRouter.post("/", (reg, res) => res.send({ title: "CREATE A User" }));
+userRouter.post("/", (reg, res) =>
+  res.send({
+    title:
+      "CREATE A User ,Caution :: User creation logic handeled by auth sign up , to handle duplication this fild is empty",
+  })
+);
 
 userRouter.put("/:id", (reg, res) => res.send({ title: "UPDATE A User" }));
 
